@@ -1,10 +1,11 @@
- const express = require('express');
+
+const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
-require('dotenv').config();
+
 
 // Routes
 const categoryRoutes = require('./routes/categoryRoutes');

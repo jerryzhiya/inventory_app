@@ -1,10 +1,10 @@
+require('dotenv').config();
 const { Pool } = require('pg');
+const isProduction = process.env.NODE_ENV === 'production';
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: process.env.NODE_ENV === 'production'
-        ? { rejectUnauthorized: false }
-        : false   // 👈 disables SSL locally
+  connectionString: process.env.DATABASE_URL,
+  ssl: isProduction ? { rejectUnauthorized: false } : false
 });
 
 module.exports = pool;
