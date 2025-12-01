@@ -22,7 +22,7 @@ app.use(expressLayouts);
 
 // Session setup (must come BEFORE routes and locals middleware)
 app.use(session({
-  secret: 'SUPERlove1$', 
+  secret: process.env.SESSION_SECRET || 'fallback secret', 
   resave: false,
   saveUninitialized: false
 }));

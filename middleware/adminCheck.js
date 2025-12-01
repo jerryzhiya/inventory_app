@@ -1,5 +1,4 @@
 function adminCheck(req, res, next) {
-  console.log('session isAdmin', req.session.isAdmin);
   if (req.session && req.session.isAdmin) {
     return next();
   }
