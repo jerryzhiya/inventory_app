@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>InventoryApp</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+    <div class="categories">
+  <h1>Categories</h1>
+  <div class="categories-form">
+    <div class="category-list">
+      <% categories.forEach(cat => { %>
+        <div class="category-card">
+          <p><strong><%= cat.name %></strong></p>
+          <p><%= cat.description %></p>
+
+          <div class="category-actions">
+            <a href="/categories/<%= cat.id %>">Edit</a>
+            <form action="/categories/<%= cat.id %>/delete" method="post">
+              <button type="submit">Delete</button>
+            </form>
+            <a href="/categories/<%= cat.id %>/items">View Items</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <h2>Add New Category</h2>
+    <form action="/categories" method="post" class="new-category-form">
+      <input type="text" name="name" placeholder="Category Name" required>
+      <textarea name="description" placeholder="Description"></textarea>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</div>
+</body>
+
+</html>

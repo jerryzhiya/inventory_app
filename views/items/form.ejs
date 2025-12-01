@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>InventoryApp</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+      <h1>
+        <%= item ? 'Edit Item' : 'Add New Item' %>
+      </h1>
+
+      <form action="<%= item ? '/categories/' + categoryId + '/items/' + item.id + '/update' 
+                     : '/categories/' + categoryId + '/items' %>" method="POST">
+        <!-- Item Name -->
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" value="<%= item ? item.name : '' %>" required>
+        </div>
+
+        <!-- Brand -->
+        <div>
+          <label for="brand">Brand:</label><br>
+          <input type="text" id="brand" name="brand" value="<%= item ? item.brand : '' %>">
+        </div>
+
+        <!-- Color -->
+        <div>
+          <label for="color">Color:</label><br>
+          <input type="text" id="color" name="color" value="<%= item ? item.color : '' %>" required>
+        </div>
+
+        <!-- Size -->
+        <div>
+          <label for="size">Size:</label><br>
+          <input type="number" id="size" name="size" value="<%= item ? item.size : '' %>" required>
+        </div>
+
+        <!-- Price -->
+        <div>
+          <label for="price">Price:</label><br>
+          <input type="number" id="price" name="price" step="0.01" value="<%= item ? item.price : '' %>" required>
+        </div>
+
+        <!-- Stock Quantity -->
+        <div>
+          <label for="stock_quantity">Stock Quantity:</label><br>
+          <input type="number" id="stock_quantity" name="stock_quantity" value="<%= item ? item.stock_quantity : '' %>">
+        </div>
+
+        <!-- Description -->
+        <div>
+          <label for="description">Description:</label><br>
+          <textarea id="description" name="description" rows="4"><%= item ? item.description : '' %></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">
+          <%= item ? 'Update Item' : 'Create Item' %>
+        </button>
+      </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,469 @@
+/* Reset & base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+}
+main {
+  flex: 1;
+}
+
+/* Navbar */
+nav {
+  background: #2c3e50;
+  color: #f39c12 ;
+
+}
+
+.logo{
+  display: flex;
+  gap: 50px;
+  padding: 15px;
+  justify-content: space-between;
+  color: #f39c12;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.nav-links a {
+  text-decoration: none;
+   color: #f39c12;
+}
+.nav-links a:hover {
+  color: #2980b9;
+}
+
+
+/* Logo + menu button */
+
+.nav-menu {
+  cursor: pointer;
+  display: none; /* hidden by default */
+}
+
+.nav-container {
+  position: relative;
+}
+/* Home Page Styling */
+.home {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero {
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: #fff;
+  padding: 60px 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.btn-primary {
+  background: #e74c3c;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #c0392b;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: #ecf0f1;
+  padding: 20px;
+  border-radius: 8px;
+  width: 280px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h2 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+/* Container */
+.container, .categories, .items {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+/* Headings */
+h1, h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+form label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+form input, form textarea, form button {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #f39c12;
+  outline: none;
+}
+
+button {
+  width: auto;          /* shrink to fit content */
+  display: inline-block; /* prevent full-width stretch */
+  padding: 0.5rem 1rem;  /* add some spacing */
+  border: none;
+  border-radius: 4px;
+  background-color: #f39c12;; /* blue background */
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f39d12bd;; /* darker blue on hover */
+}
+.category-list {
+  display: flex;
+  flex-direction: column; /* stack categories vertically */
+  gap: 1rem;
+}
+
+.category-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.category-card p {
+  margin: 0.25rem 0;
+}
+
+.category-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.new-category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+ul li strong {
+  color: #34495e;
+}
+
+ul li a {
+  margin-left: 1rem;
+  color: #2980b9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+ul li a:hover {
+  color: #f39c12;
+}
+
+ul li form button {
+  background: #e74c3c;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+ul li form button:hover {
+  background: #c0392b;
+}
+/* Items Page */
+.form-items {
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  gap: 1rem; /* space between cards */
+}
+
+.item-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
+
+.item-card p {
+  margin: 0.25rem 0;
+}
+
+.item-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.new-item-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Add New Item Form */
+.form-items h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.form-items form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+}
+
+.form-items form input,
+.form-items form textarea {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-items form textarea {
+  grid-column: span 2;
+  resize: vertical;
+}
+
+.form-items form button {
+  grid-column: auto;      
+  justify-self: start;    
+  width: 100px;
+  background: #f39c12;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-items form button:hover {
+  background: #d35400;
+}
+
+
+/* Logo + menu button */
+
+.nav-menu {
+  cursor: pointer;
+  display: none; /* hidden by default */
+}
+
+.nav-container {
+  position: relative;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #2c3e50;   /* Dark elegant background */
+  color: #ecf0f1;              /* Light text for contrast */
+  padding: 20px 40px;
+  margin-top: 40px;
+}
+
+footer .footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;             /* Responsive for smaller screens */
+}
+
+footer h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+footer p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #ecf0f1;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+footer a:hover {
+  color: #3498db;              /* Soft blue hover effect */
+  text-decoration: underline;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+/* Small devices (phones) */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .nav-links {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #2c3e50;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    max-height: 400px;
+  }
+  .nav-menu {
+    display: block;
+  }
+
+  .container, .categories, .items {
+    padding: 1rem;
+  }
+
+  .form-items form {
+    grid-template-columns: 1fr; /* stack inputs vertically */
+  }
+
+  .form-items form textarea,
+  .form-items form button {
+    grid-column: span 1;
+  }
+
+  ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  ul li a, ul li form {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+.nav-menu {
+    display: block; /* show hamburger on small screens */
+  }
+
+  .nav-container {
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background:#2c3e50;
+    max-height: 0;
+    padding: 1rem;
+    transition: max-height 0.4s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-container.active {
+    max-height: 400px;
+  }
+
+  .nav-links li {
+    margin: 0.5rem 0;
+  }
+}
+
+  .form-items form {
+    grid-template-columns: 1fr 1fr; /* two columns */
+  }
+
+  .form-items form textarea,
+  .form-items form button {
+    grid-column: span 2;
+  }
+
+/* Large devices (desktops) */
+@media (min-width: 1025px) {
+  .form-items form {
+    grid-template-columns: 1fr 1fr; /* keep two columns */
+  }
+}
