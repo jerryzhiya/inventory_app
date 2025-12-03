@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 
 // Mount routes
 app.use('/categories', categoryRoutes);
-app.use('/items', itemRoutes);
+app.use('/categories', itemRoutes);
 
 // Home page
 app.get('/', (req, res) => {
