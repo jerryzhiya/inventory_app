@@ -1,12 +1,25 @@
 
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
+const envFile = process.env.NODE_ENV = 'production'? ".env.production" : '.env.development';
 
 
+dotenv.config({path: path.resolve(process.cwd(),envFile)});
+
+const pool = require('./db/pool');
+
+pool.query('SELECT NOW()', (err, res)=> {
+  if(err) {
+    console.log('Database connection error');
+  } else {
+    console.log('connected at:', res.rows[0]);
+  }
+});
 // Routes
 const categoryRoutes = require('./routes/categoryRoutes');
 const itemRoutes = require('./routes/itemsRoutes');
