@@ -1,7 +1,4 @@
 // pool.js
-require('dotenv').config({ path: '.env.production' });
-
-// db.js
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env.production' });
 
