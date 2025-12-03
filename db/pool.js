@@ -1,11 +1,14 @@
 // db.js
+// db.js
 require('dotenv').config({ path: '.env.production' });
 
 const { Pool } = require('pg');
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false } // Supabase requires SSL
+  ssl: {
+    rejectUnauthorized: false   // <-- this line fixes the self-signed cert error
+  }
 });
 
 // Optional: test connection
