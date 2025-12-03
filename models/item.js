@@ -1,49 +1,47 @@
-const pool = require('../db/pool');
+import sql from '../db/pool';
+
+// models/item.js
+import sql from '../db/pool.js';
 
 class Item {
-    static async findAllByCategory(categoryID) {
-        const result = await pool.query(
-            'SELECT * FROM items WHERE category_id = $1 ORDER BY id',
-            [categoryID]
-        );
-        return result.rows;
-    }
+  static async findAllByCategory(categoryID) {
+    return await sql`
+      SELECT * FROM items WHERE category_id = ${categoryID} ORDER BY id
+    `;
+  }
 
-    static async findById(id) {
-        const result = await pool.query(
-            'SELECT * FROM items WHERE id = $1',
-            [id]
-        );
-        return result.rows[0];
-    }
+  static async findById(id) {
+    const result = await sql`
+      SELECT * FROM items WHERE id = ${id}
+    `;
+    return result[0];
+  }
 
-    static async create(categoryID, name, brand, size, color, price, stock_quantity, description) {
-        const result = await pool.query(
-            `INSERT INTO items (category_id, name, brand, size, color, price, stock_quantity, description)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-       RETURNING *`,
-            [categoryID, name, brand, size, color, price, stock_quantity, description]
-        );
-        return result.rows[0];
-    }
+  static async create(categoryID, name, brand, size, color, price, stock_quantity, description) {
+    const result = await sql`
+      INSERT INTO items (category_id, name, brand, size, color, price, stock_quantity, description)
+      VALUES (${categoryID}, ${name}, ${brand}, ${size}, ${color}, ${price}, ${stock_quantity}, ${description})
+      RETURNING *
+    `;
+    return result[0];
+  }
 
-    static async update(id, name, brand, price, size, color, stock_quantity, description) {
-        const result = await pool.query(
-            `UPDATE items
-       SET name=$1, brand=$2, price=$3, size=$4, color=$5, stock_quantity=$6, description=$7, updated_at=NOW()
-       WHERE id=$8
-       RETURNING *`,
-            [name, brand, price, size, color, stock_quantity, description, id]
-        );
-        return result.rows[0];
-    }
+  static async update(id, name, brand, price, size, color, stock_quantity, description) {
+    const result = await sql`
+      UPDATE items
+      SET name=${name}, brand=${brand}, price=${price}, size=${size}, color=${color},
+          stock_quantity=${stock_quantity}, description=${description}, updated_at=NOW()
+      WHERE id=${id}
+      RETURNING *
+    `;
+    return result[0];
+  }
 
-    static async delete(id) {
-        await pool.query(
-            'DELETE FROM items WHERE id = $1',
-            [id]
-        );
-    }
+  static async delete(id) {
+    await sql`
+      DELETE FROM items WHERE id = ${id}
+    `;
+  }
 }
 
-module.exports = Item;
+export default Item;
