@@ -1,19 +1,20 @@
-import dotenv from 'dotenv';
-dotenv.config({path: '.env.production'});
-import postgres from 'postgres';
+// db.js
+require('dotenv').config({ path: '.env.production' });
 
-const connectionString = process.env.DATABASE_URL;
+const { Pool } = require('pg');
 
-// Supabase requires SSL, so add ssl: 'require'
-const sql = postgres(connectionString, {
-  ssl: 'require'
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false } // Supabase requires SSL
 });
-(async ()=> {
-  try {
-    const reult = await sql`SELECT NOW()`;
-    console.log('Database connected:', reult[0]);
-  } catch (error) {
-    console.log('Database connection error', error.message);
+
+// Optional: test connection
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error('Database connection error:', err.message);
+  } else {
+    console.log('Database connected:', res.rows[0]);
   }
-})();
-export default sql;
+});
+
+module.exports = pool;

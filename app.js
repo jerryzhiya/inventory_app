@@ -6,11 +6,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
-const envFile = process.env.NODE_ENV = 'production'? ".env.production" : '.env.development';
 
-
-dotenv.config({path: path.resolve(process.cwd(),envFile)});
-
+// Choose env file based on NODE_ENV
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
 // Routes
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -26,9 +25,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressLayouts);
 
-// Session setup (must come BEFORE routes and locals middleware)
+// Session setup
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'fallback secret', 
+  secret: process.env.SESSION_SECRET || 'fallback secret',
   resave: false,
   saveUninitialized: false
 }));
@@ -41,7 +40,7 @@ app.use((req, res, next) => {
 
 // Mount routes
 app.use('/categories', categoryRoutes);
-app.use('/categories', itemRoutes);
+app.use('/items', itemRoutes);
 
 // Home page
 app.get('/', (req, res) => {
