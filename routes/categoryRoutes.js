@@ -1,28 +1,28 @@
-const express = require('express');
-const route = express.Router();
-const categoryController = require('../controller/categoryController');
-const adminCheck = require('../middleware/adminCheck');
+import express from 'express';
+import * as categoryController from '../controller/categoryController.js';
+import adminCheck from '../middleware/adminCheck.js';
 
+const router = express.Router();
 
 // List all categories
-route.get('/', categoryController.listCategories);
+router.get('/', categoryController.listCategories);
 
 // Show new category form
-route.get('/form', adminCheck, categoryController.showNewCategoryForm);
+router.get('/form', adminCheck, categoryController.showNewCategoryForm);
 
 // Show edit category form
-route.get('/:id/edit', adminCheck, categoryController.showEditCategoryForm);
+router.get('/:id/edit', adminCheck, categoryController.showEditCategoryForm);
 
 // Show a single category by ID
-route.get('/:id', categoryController.showCategory);
+router.get('/:id', categoryController.showCategory);
 
 // Create category
-route.post('/', categoryController.createCategory);
+router.post('/', categoryController.createCategory);
 
 // Update category
-route.post('/:id/update', adminCheck, categoryController.updateCategory);
+router.post('/:id/update', adminCheck, categoryController.updateCategory);
 
 // Delete category
-route.post('/:id/delete', adminCheck, categoryController.deleteCategory);
+router.post('/:id/delete', adminCheck, categoryController.deleteCategory);
 
-module.exports = route;
+export default router;

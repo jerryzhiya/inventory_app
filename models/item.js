@@ -1,4 +1,3 @@
-import sql from '../db/pool';
 
 // models/item.js
 import sql from '../db/pool.js';

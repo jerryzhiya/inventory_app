@@ -1,5 +1,3 @@
-import sql from '../db/pool';
-
 
 import sql from '../db/pool.js';
 

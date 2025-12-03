@@ -1,27 +1,15 @@
-const express = require('express');
-const router = express.Router({ mergeParams: true });
-const itemController = require('../controller/itemController');
-const adminCheck = require('../middleware/adminCheck');
+// routes/itemsRoutes.js
+import express from 'express';
+import * as itemController from '../controller/itemController.js';  // plural folder + .js extension
 
-// List items
+const router = express.Router();
+
 router.get('/:categoryId/items', itemController.listItems);
-
-// Show new item form (protected)
-router.get('/:categoryId/items/new', adminCheck, itemController.showNewItemForm);
-
-// Create item (protected)
-router.post('/:categoryId/items', adminCheck, itemController.createItem);
-
-// Show single item
 router.get('/:categoryId/items/:id', itemController.showItem);
+router.get('/:categoryId/items/form', itemController.showNewItemForm);
+router.post('/:categoryId/items', itemController.createItem);
+router.post('/:categoryId/items/:id/update', itemController.updateItem);
+router.get('/:categoryId/items/:id/edit', itemController.showEditForm);
+router.post('/:categoryId/items/:id/delete', itemController.deleteItem);
 
-// Edit form (protected)
-router.get('/:categoryId/items/:id/edit', adminCheck, itemController.showEditForm);
-
-// Update item (protected)
-router.post('/:categoryId/items/:id/update', adminCheck, itemController.updateItem);
-
-// Delete item (protected)
-router.post('/:categoryId/items/:id/delete', adminCheck, itemController.deleteItem);
-
-module.exports = router;
+export default router;

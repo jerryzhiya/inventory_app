@@ -1,19 +1,26 @@
 
-const express = require('express');
-const path = require('path');
-const dotenv = require('dotenv');
-const app = express();
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const expressLayouts = require('express-ejs-layouts');
+import express from 'express';
+import path from 'path';
+import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
+import session from 'express-session';
+import expressLayouts from 'express-ejs-layouts';
+import { fileURLToPath } from 'url';
+
+// Fix __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Choose env file based on NODE_ENV
 const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
 dotenv.config({ path: path.resolve(process.cwd(), envFile) });
 
+// Initialize app
+const app = express();
+
 // Routes
-const categoryRoutes = require('./routes/categoryRoutes');
-const itemRoutes = require('./routes/itemsRoutes');
+import categoryRoutes from './routes/categoryRoutes.js';
+import itemRoutes from './routes/itemsRoutes.js';
 
 // View engine
 app.set('view engine', 'ejs');

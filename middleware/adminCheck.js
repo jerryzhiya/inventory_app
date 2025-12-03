@@ -9,4 +9,4 @@ function adminCheck(req, res, next) {
   // return res.status(403).render('error', { message: 'Forbidden: Admin Only' });
 }
 
-module.exports = adminCheck;
+export default adminCheck;
