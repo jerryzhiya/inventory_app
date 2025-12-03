@@ -1,14 +1,27 @@
-// pool.js
-import dotenv from 'dotenv';
-dotenv.config({ path: '.env.production' });
+// import postgres from 'postgres';
 
-import pkg from 'pg';
-const { Pool } = pkg;
+// const sql = postgres(process.env.DATABASE_URL, {
+//   ssl: 'require'
+// });
+
+// // Optional: test connection
+// (async () => {
+//   try {
+//     const result = await sql`SELECT NOW()`;
+//     console.log('Database connected:', result[0]);
+//   } catch (err) {
+//     console.error('Database connection error:', err.message);
+//   }
+// })();
+
+require('dotenv').config({ path: '.env.production' });
+
+const { Pool } = require('pg');
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false
+    ssl: 'require'
   }
 });
 
@@ -21,4 +34,4 @@ pool.query('SELECT NOW()', (err, res) => {
   }
 });
 
-export default pool;
+module.exports = pool;
