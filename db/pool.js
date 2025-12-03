@@ -1,12 +1,17 @@
 // pool.js
 require('dotenv').config({ path: '.env.production' });
 
-const { Pool } = require('pg');
+// db.js
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env.production' });
+
+import pkg from 'pg';
+const { Pool } = pkg;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false   // accept Supabase's self-signed cert
+    rejectUnauthorized: false
   }
 });
 
@@ -19,4 +24,4 @@ pool.query('SELECT NOW()', (err, res) => {
   }
 });
 
-module.exports = pool;
+export default pool;
