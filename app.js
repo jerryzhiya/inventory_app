@@ -11,15 +11,7 @@ const envFile = process.env.NODE_ENV = 'production'? ".env.production" : '.env.d
 
 dotenv.config({path: path.resolve(process.cwd(),envFile)});
 
-const pool = require('./db/pool');
 
-pool.query('SELECT NOW()', (err, res)=> {
-  if(err) {
-    console.log('Database connection error', err.message);
-  } else {
-    console.log('connected at:', res.rows[0]);
-  }
-});
 // Routes
 const categoryRoutes = require('./routes/categoryRoutes');
 const itemRoutes = require('./routes/itemsRoutes');
